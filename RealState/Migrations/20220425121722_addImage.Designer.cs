@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealState.Services;
 
 namespace RealState.Migrations
 {
     [DbContext(typeof(RealStateDbContext))]
-    partial class RealStateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220425121722_addImage")]
+    partial class addImage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,33 +93,6 @@ namespace RealState.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PropertyItems");
-                });
-
-            modelBuilder.Entity("RealState.Entities.PropertyTrace", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("DateSale")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IdProperty")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("Tax")
-                        .HasColumnType("real");
-
-                    b.Property<int>("Value")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PropertyTrace");
                 });
 #pragma warning restore 612, 618
         }

@@ -18,6 +18,8 @@ namespace RealState
 {
     public class Startup
     {
+        private readonly string _Mycors = "MyCors";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -36,6 +38,15 @@ namespace RealState
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RealState", Version = "v1" });
             });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: _Mycors, builder =>
+                {
+                    builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+                    .AllowAnyHeader().AllowAnyMethod();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +62,8 @@ namespace RealState
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(_Mycors);
 
             app.UseAuthorization();
 

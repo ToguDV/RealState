@@ -12,5 +12,11 @@ namespace RealState.Services
         public RealStateDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<PropertyItem> PropertyItems { get; set; }
+
+        public DbSet<RealState.Entities.OwnerItem> OwnerItem { get; set; }
+
+        public DbSet<RealState.Entities.PropertyImage> PropertyImage { get; set; }
+
+        public DbSet<RealState.Entities.PropertyTrace> PropertyTrace { get; set; }
     }
 }
