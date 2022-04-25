@@ -10,7 +10,7 @@ Instalar:
 
 Una vez que tenga eso, vaya al directorio raíz de proyectos y ejecute
 
-### dotnet ef database update
+## dotnet ef database update
 
 luego usar el comando: dotnet ef migrations add Init
 
